@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login-SEI</title>
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+    <div class="page">
+                <form id="login" action="/submit" method="POST" class="formLogin">
+            <img id="logo" src="logo.png" alt="logocrea">
+            <h1>Cadastro de login - SEI</h1>
+            <b><p>Sua senha deve atender os seguintes requisitos:<br><br></b>
+                - Deve ter pelo menos 8 caracteres; <br>
+                - Deve ter pelo menos uma letra maiúscula; <br>
+                - Deve ter pelo menos uma letra minúscula; <br>
+                - Deve ter pelo menos um número; <br>
+                - Deve ter pelo menos um símbolo: Ex:( ! # @ & % )</p>
+            <label for="usuarioad">Usuário</label>
+            <input type="text" placeholder="nome.sobrenome" autofocus="true"/>
+            <label for="senha">Senha</label>
+            <input type="password" id="senha" name="senha" placeholder=""/>
+            <input type="submit" value="Salvar" class="btn"/>
+            <script>
+                document.getElementById('login').addEventListener('submit', function(event) {
+                    var senhaInput = document.getElementById('senha');
+                    var senha = senhaInput.value;
+                     // regex requisitos//
+                     var regex = /^(?=.*\d)(?=.*[a-z])(?=.*[!@#$%^&*]).{8,}$/;
+        
+                    if (!regex.test(senha)) {
+                        alert('A senha não atende aos requisitos mínimos:\n- Pelo menos 8 caracteres\n- Pelo menos uma letra maiúscula\n- Pelo menos uma letra minúscula\n- Pelo menos um número\n- Pelo menos um caractere especial');
+                        event.preventDefault(); // Impede o envio do formulário se a senha não atender aos requisitos
+                    }
+                });
+            </script>
+        </form>
+    </div>
+    </body>
+</html>
